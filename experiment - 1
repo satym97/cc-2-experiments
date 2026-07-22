@@ -1,0 +1,65 @@
+exp 1.1 contain duplicate
+AIM
+To write a Python program to check whether an array contains duplicate elements and return True if any duplicate exists; otherwise return False.
+
+ALGORITHM
+1.Start.
+
+2.Take the input array nums.
+
+3.Sort the array.
+
+4.Traverse the array from index 1 to n-1.
+
+5.Compare the current element with the previous element.
+
+6.If both elements are equal, return True.
+
+7.If no duplicates are found after checking all elements, return False.
+
+8.Stop.
+
+CODE(Python)
+class Solution(object):
+    def containsDuplicate(self, nums):
+        nums.sort()
+
+        for i in range(1, len(nums)):
+            if nums[i] == nums[i - 1]:
+                return True
+        return False
+EXP 1.2 
+AIM
+To write a Python program to check whether an array contains duplicate elements such that the distance between their indices is at most k.
+
+ALGORITHM
+Start.
+
+1.Take the input array nums and integer k.
+
+2.Create an empty dictionary mp.
+
+3.Traverse the array using a loop.
+
+4.If the current element is already in mp and the difference between the current index and the stored index is less than or equal to k, return True.
+
+5.Otherwise, store/update the current element with its index in mp.
+
+6.Repeat until all elements are checked.
+
+7.If no such duplicate is found, return False.
+
+8.Stop.
+
+CODE(python)
+class Solution(object):
+    def containsNearbyDuplicate(self, nums, k):
+        mp = {}
+
+        for i in range(len(nums)):
+            if nums[i] in mp and i - mp[nums[i]] <= k:
+                return True
+
+            mp[nums[i]] = i
+
+        return False
